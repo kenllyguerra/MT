@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Biblioteca</title>
+  <link rel="stylesheet" href="style5.css">
+</head>
+<center>Esteban Ortega <br>Kenlly Guerra</center>
+<body>
+  <h1>Gestión de Biblioteca</h1>
+  <form id="libraryForm">
+    <label for="book">Título del Libro:</label>
+    <input type="text" id="book" name="book">
+    <label for="returnDate">Fecha de Devolución:</label>
+    <input type="date" id="returnDate" name="returnDate">
+    <button type="submit">Registrar</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('libraryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const book = document.getElementById('book').value;
+      const returnDate = new Date(document.getElementById('returnDate').value);
+      const today = new Date();
+      if (returnDate < today) {
+        document.getElementById('result').innerHTML = `¡Alerta! El libro ${book} tiene retraso en la devolución.`;
+      } else {
+        document.getElementById('result').innerHTML = `El libro ${book} ha sido registrado correctamente.`;
+      }
+    });
+  </script>
+</body>
+</html>
